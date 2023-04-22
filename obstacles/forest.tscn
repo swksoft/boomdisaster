@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://bokfk4qiobcvt"]
+
+[ext_resource type="Script" path="res://obstacles/forest.gd" id="1_msceo"]
+[ext_resource type="Texture2D" uid="uid://dvl465y362unk" path="res://obstacles/arbo lito.png" id="2_n4a2t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqk8n"]
+radius = 57.2713
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrgwj"]
+size = Vector2(113, 113)
+
+[node name="Forest" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_msceo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(16, 0)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(41, 1)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-7, 21)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(9, 21)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(34, 22)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(15, 35)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(31, 35)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(56, 36)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(-21, 44)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(-5, 44)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(20, 45)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(23, 56)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(39, 56)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(64, 57)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(-11, 65)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D17" type="Sprite2D" parent="."]
+position = Vector2(5, 65)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D18" type="Sprite2D" parent="."]
+position = Vector2(30, 66)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D19" type="Sprite2D" parent="."]
+position = Vector2(8, 84)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D20" type="Sprite2D" parent="."]
+position = Vector2(24, 84)
+texture = ExtResource("2_n4a2t")
+
+[node name="Sprite2D21" type="Sprite2D" parent="."]
+position = Vector2(49, 85)
+texture = ExtResource("2_n4a2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, 44)
+shape = SubResource("CircleShape2D_fqk8n")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(23.5, 43.5)
+shape = SubResource("RectangleShape2D_qrgwj")
+
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]

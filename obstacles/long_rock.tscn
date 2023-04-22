@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://pqnn65no0nxq"]
+
+[ext_resource type="Texture2D" uid="uid://jai074p1mq6b" path="res://obstacles/longrock.png" id="1_l17bw"]
+[ext_resource type="Texture2D" uid="uid://co1j43jrgdwmr" path="res://obstacles/roco.png" id="2_41j8o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3mgm"]
+radius = 18.0
+height = 106.0
+
+[node name="LongRock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l17bw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(55, -19)
+texture = ExtResource("2_41j8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, -7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g3mgm")

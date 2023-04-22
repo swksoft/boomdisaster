@@ -1,0 +1,89 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cplwg1wn4p58n"]
+
+[ext_resource type="Texture2D" uid="uid://b18mmwti5lnnj" path="res://player/uvin-Sheet64x64.png" id="1_y4twp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueaa1"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8u75"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3rh1"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70sx8"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ost"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xal05"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2upp"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isymx"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypqjk"]
+atlas = ExtResource("1_y4twp")
+region = Rect2(128, 128, 64, 64)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_ueaa1")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8u75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3rh1")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70sx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6ost")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xal05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2upp")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isymx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypqjk")
+}],
+"loop": true,
+"name": &"recover",
+"speed": 13.0
+}]

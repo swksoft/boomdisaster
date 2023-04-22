@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4pur0b14honv"]
+
+[ext_resource type="Script" path="res://obstacles/Rock.gd" id="1_omexa"]
+[ext_resource type="Texture2D" uid="uid://co1j43jrgdwmr" path="res://obstacles/roco.png" id="1_xfd4j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j52ev"]
+size = Vector2(32, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8wx5"]
+size = Vector2(32, 32)
+
+[node name="Roca" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_omexa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xfd4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.75)
+shape = SubResource("RectangleShape2D_j52ev")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Slow" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_i8wx5")
+debug_color = Color(0.223529, 0.0901961, 0.0470588, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

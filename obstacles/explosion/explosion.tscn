@@ -1,0 +1,95 @@
+[gd_scene load_steps=21 format=3 uid="uid://c0gpe5u5ujwtf"]
+
+[ext_resource type="Script" path="res://obstacles/explosion/explosion.gd" id="1_xqwl2"]
+[ext_resource type="Texture2D" uid="uid://cr0ss3x2fvx1y" path="res://obstacles/explosion/spr_realisticexplosion_0.png" id="2_5m6od"]
+[ext_resource type="AudioStream" uid="uid://ca8n4bisnaog1" path="res://obstacles/explosion/Explosion.ogg" id="2_pubyf"]
+[ext_resource type="Texture2D" uid="uid://4kjtpmjjsmab" path="res://obstacles/explosion/spr_realisticexplosion_1.png" id="3_3hidh"]
+[ext_resource type="Texture2D" uid="uid://0bsgumjcisic" path="res://obstacles/explosion/spr_realisticexplosion_2.png" id="4_oq7oe"]
+[ext_resource type="Texture2D" uid="uid://dkj3l4a51t2ex" path="res://obstacles/explosion/spr_realisticexplosion_3.png" id="5_vxg56"]
+[ext_resource type="Texture2D" uid="uid://25sshk3pupvi" path="res://obstacles/explosion/spr_realisticexplosion_4.png" id="6_1p745"]
+[ext_resource type="Texture2D" uid="uid://cu12ih7u5yf3h" path="res://obstacles/explosion/spr_realisticexplosion_5.png" id="7_lmwhd"]
+[ext_resource type="Texture2D" uid="uid://fj5rvpcbg8tw" path="res://obstacles/explosion/spr_realisticexplosion_6.png" id="8_b1e3l"]
+[ext_resource type="Texture2D" uid="uid://cyoe1sg28e342" path="res://obstacles/explosion/spr_realisticexplosion_7.png" id="9_jui2r"]
+[ext_resource type="Texture2D" uid="uid://cwv1tlr6mpcnc" path="res://obstacles/explosion/spr_realisticexplosion_8.png" id="10_wqcak"]
+[ext_resource type="Texture2D" uid="uid://dmla1b2ujgft0" path="res://obstacles/explosion/spr_realisticexplosion_9.png" id="11_ukb01"]
+[ext_resource type="Texture2D" uid="uid://dciuu6vx0vfpg" path="res://obstacles/explosion/spr_realisticexplosion_10.png" id="12_ghb6v"]
+[ext_resource type="Texture2D" uid="uid://cjy0q0k2atp28" path="res://obstacles/explosion/spr_realisticexplosion_11.png" id="13_doq34"]
+[ext_resource type="Texture2D" uid="uid://wrx2ivq4auqw" path="res://obstacles/explosion/spr_realisticexplosion_12.png" id="14_i1uhb"]
+[ext_resource type="Texture2D" uid="uid://cebmlphvxooer" path="res://obstacles/explosion/spr_realisticexplosion_13.png" id="15_3u6al"]
+[ext_resource type="Texture2D" uid="uid://yfuslsa0h3vj" path="res://obstacles/explosion/spr_realisticexplosion_14.png" id="16_y0p0l"]
+[ext_resource type="Texture2D" uid="uid://b85itxufq7ahj" path="res://obstacles/explosion/spr_realisticexplosion_15.png" id="17_q2buu"]
+[ext_resource type="Texture2D" uid="uid://bmw26j1bh2pda" path="res://obstacles/explosion/spr_realisticexplosion_16.png" id="18_sl05k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3f5ix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5m6od")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3hidh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oq7oe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vxg56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1p745")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lmwhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b1e3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jui2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wqcak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ukb01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ghb6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_doq34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_i1uhb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3u6al")
+}, {
+"duration": 0.1,
+"texture": ExtResource("16_y0p0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_q2buu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_sl05k")
+}],
+"loop": true,
+"name": &"boom",
+"speed": 21.0
+}]
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_xqwl2")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_pubyf")
+volume_db = -5.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3f5ix")
+animation = &"boom"
+frame = 14
+frame_progress = 0.289092
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

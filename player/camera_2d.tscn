@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnx0suk12kbe7"]
+
+[ext_resource type="Script" path="res://Camera.gd" id="1_ms4hg"]
+
+[node name="Camera2D" type="Camera2D" groups=["Camera"]]
+offset = Vector2(0, 150)
+script = ExtResource("1_ms4hg")

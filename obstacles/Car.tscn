@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dk65bmpqlrje7"]
+
+[ext_resource type="Script" path="res://obstacles/Car.gd" id="1_3pfxh"]
+[ext_resource type="Texture2D" uid="uid://butp1jq3kqmx0" path="res://obstacles/car.png" id="1_hg70r"]
+[ext_resource type="PackedScene" uid="uid://c0gpe5u5ujwtf" path="res://obstacles/explosion/explosion.tscn" id="2_ruixu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tk4ma"]
+radius = 12.0416
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5wwgy"]
+size = Vector2(32, 28)
+
+[node name="Car" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_3pfxh")
+Explosion = ExtResource("2_ruixu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hg70r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tk4ma")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5wwgy")
+
+[node name="ExplosionSpawn" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://hohkh1hwulno"]
+
+[ext_resource type="FontFile" uid="uid://tjjd8ujm3q5j" path="res://Squarewave.ttf" id="1_yyxhi"]
+
+[resource]
+base_font = ExtResource("1_yyxhi")
