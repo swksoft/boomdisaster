@@ -1,25 +1,54 @@
 [gd_scene load_steps=4 format=3 uid="uid://cnafivlc53lve"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_k7nfc"]
+[ext_resource type="Script" path="res://playernew.gd" id="1_apxni"]
 [ext_resource type="SpriteFrames" uid="uid://cplwg1wn4p58n" path="res://player/animations.tres" id="2_xe5wc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p6phk"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1315p"]
+radius = 12.0
+height = 46.0
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+top_level = true
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_k7nfc")
+script = ExtResource("1_apxni")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = ExtResource("2_xe5wc")
-animation = &"normal"
+animation = &"jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player"]]
-shape = SubResource("CircleShape2D_p6phk")
+position = Vector2(2, 10)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_1315p")
 
-[node name="Recovery" type="Timer" parent="."]
+[node name="grow" type="Node" parent="."]
+
+[node name="SlowGrow" type="Timer" parent="grow"]
+
+[node name="NormalGrow" type="Timer" parent="grow"]
+wait_time = 4.0
+autostart = true
+
+[node name="FastGrow" type="Timer" parent="grow"]
+
+[node name="jump" type="Node" parent="."]
+
+[node name="DurationJump" type="Timer" parent="jump"]
 wait_time = 1.5
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="CooldownJump" type="Timer" parent="jump"]
 wait_time = 2.0
+
+[node name="damage" type="Node" parent="."]
+
+[node name="Stun" type="Timer" parent="damage"]
+
+[node name="Reload" type="Timer" parent="."]
+
+[connection signal="timeout" from="grow/SlowGrow" to="." method="_on_slow_grow_timeout"]
+[connection signal="timeout" from="grow/NormalGrow" to="." method="_on_normal_grow_timeout"]
+[connection signal="timeout" from="grow/FastGrow" to="." method="_on_fast_grow_timeout"]
+[connection signal="timeout" from="jump/DurationJump" to="." method="_on_duration_jump_timeout"]
+[connection signal="timeout" from="jump/CooldownJump" to="." method="_on_cooldown_jump_timeout"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

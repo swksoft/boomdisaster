@@ -17,8 +17,5 @@ func _process(_delta: float) -> void:
 	# 		POSICION DE LA CÁMARA Y OBJETOS EN PANTALLA
 	
 	despawn.global_position = camera.global_position
-	hud.global_position = Vector2(camera.global_position.x-255, camera.global_position.y-90)
-	spawner.global_position = Vector2(camera.global_position.x-255, camera.global_position.y+400)
-
-func _on_despawn_body_entered(body: Node2D) -> void:
-	body.queue_free()
+	hud.global_position = Vector2(camera.global_position.x-255, camera.global_position.y-400)
+	spawner.global_position = Vector2(camera.global_position.x-255, camera.global_position.y+800)

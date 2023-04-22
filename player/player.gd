@@ -1,9 +1,18 @@
 extends CharacterBody2D
 
+enum state{
+	SLOW,
+	NORMAL,
+	FAST,
+	JUMP,
+	HURT
+}
 
-const SPEED = 240.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const MAX_SPEED = 1000
+const MAX_SPEED = 1000.0
+const MIN_SPEED = 10.0
+const NORMAL_SPEED = 800.0
 
 var hit : bool
 
@@ -18,6 +27,12 @@ var gravity: int = 80 #ProjectSettings.get_setting("physics/2d/default_gravity")
 var checkpoint_pos = self.global_position
 
 @onready var animation = $AnimatedSprite2D
+
+@onready var collision = $CollisionShape2D
+
+@onready var cooldown = $Cooldown
+
+var jump : bool
 
 func check_maxspeed():
 	if velocity.y >= 999:
@@ -67,11 +82,19 @@ func _physics_process(delta: float) -> void:
 		#elif velocity.y >= 1600:
 		#	animation.speed_scale = 4
 	
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("ui_accept") and jump == false:
+		collision.disabled = true
+		jump = true
+		cooldown.start(0.35)
 	
-#	if Input.is_action_just_pressed("ui_down") and !is_on_floor():
-#		velocity.y += 100
+	elif Input.is_action_pressed("ui_down"):
+		velocity.y += 1.5
+		if velocity.y <= 11:
+			velocity.y = MIN_SPEED
+			
+		
+	elif Input.is_action_pressed("ui_up"):
+		velocity.y -= 10
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
@@ -86,3 +109,8 @@ func _process(_delta: float) -> void:
 	#print("Metros -> ",Vector2(get_global_position()).y)
 	#print(position)
 	pass
+
+
+func _on_cooldown_timeout() -> void:
+	collision.disabled = false
+	jump = false

@@ -5,7 +5,7 @@ var motion = Vector2.ZERO
 @export var speed = 1.0
 
 @onready var player = get_tree().get_nodes_in_group("Player")[0]
-@onready var hud = get_tree().get_root().get_node("hud")
+#@onready var hud = get_tree().get_root().get_node("hud")
 
 @onready var timer := $Timer
 
@@ -42,9 +42,9 @@ func _on_timer_timeout() -> void:
 		timer.stop()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
-	hud.mseg = Global.game_data.MINUTES
-	hud.seg = Global.game_data.SECONDS
-	hud.mi = Global.game_data.MSECONDS
+	#hud.mseg = Global.game_data.MINUTES
+	#hud.seg = Global.game_data.SECONDS
+	#hud.mi = Global.game_data.MSECONDS
 	
 	game_over.start(1.0)
 	get_tree().paused = true

@@ -10,6 +10,7 @@ var direction = randf()
 
 func _ready() -> void:
 	randomize()
+	scale = Vector2((randf()+1)*2,(randf()+1)*2)
 	$AnimatedSprite2D.play("normal")
 
 func _process(delta: float) -> void:
@@ -28,10 +29,12 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		if direction < 0.5:
-			player.position.x += 1000
-		else:
-			player.position.x -= 1000
-	
 		$AnimatedSprite2D.play("recover")
-	
+		$Timer.start(0.5)
+
+func _on_timer_timeout() -> void:
+	if direction < 0.5:
+		player.position.x += 1000
+	else:
+		player.position.x -= 1000
+	queue_free()

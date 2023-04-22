@@ -52,7 +52,7 @@ func _on_obstacle_spawn_timeout() -> void:
 
 
 func _on_obstacle_spawn_2_timeout() -> void:
-	var xPos := randf_range(camera.global_position.x-500, camera.global_position.x+500)
+	var xPos := randf_range(camera.global_position.x-1000, camera.global_position.x+1000)
 	
 	if player.velocity.y <= 100:
 		pass

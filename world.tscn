@@ -29,7 +29,7 @@ texture = ExtResource("9_urls3")
 sources/0 = SubResource("TileSetAtlasSource_x40ey")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrfpu"]
-size = Vector2(7714, 332)
+size = Vector2(14868, 332)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_e0mqq")
@@ -68,7 +68,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="Spawner" type="Node2D" parent="."]
-position = Vector2(9, 1055)
+position = Vector2(1, 1191)
 script = ExtResource("7_382jv")
 
 [node name="ObstacleSpawn" type="Timer" parent="Spawner"]
@@ -84,7 +84,7 @@ position = Vector2(-85, 288)
 position = Vector2(228, 127)
 
 [node name="Tree2" parent="decoration" instance=ExtResource("9_50idv")]
-position = Vector2(-94, 74)
+position = Vector2(218, 2672)
 
 [node name="Estrella" parent="decoration" instance=ExtResource("10_uk2yb")]
 position = Vector2(231, 161)

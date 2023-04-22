@@ -33,8 +33,8 @@ func _process(delta: float) -> void:
 		seg = Global.game_data.SECONDS
 		mi = Global.game_data.MSECONDS
 	
-	var best_time_passed = "%02:%02d:%03d" % [best_min, best_seg, best_mseg]
-	best_time.text = "(Max: " + best_time_passed + ")"
+	#var best_time_passed = "%02:%02d:%03d" % [best_min, best_seg, best_mseg]
+	#best_time.text = "(Max: " + best_time_passed + ")"
 	
 	if player:
 		var dist_passed = "%04d" % [player.get_global_position().y]

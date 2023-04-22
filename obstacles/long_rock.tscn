@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://pqnn65no0nxq"]
+[gd_scene load_steps=6 format=3 uid="uid://pqnn65no0nxq"]
 
+[ext_resource type="Script" path="res://obstacles/long_rock.gd" id="1_hb1og"]
 [ext_resource type="Texture2D" uid="uid://jai074p1mq6b" path="res://obstacles/longrock.png" id="1_l17bw"]
 [ext_resource type="Texture2D" uid="uid://co1j43jrgdwmr" path="res://obstacles/roco.png" id="2_41j8o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g3mgm"]
-radius = 18.0
-height = 106.0
+radius = 11.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04aoj"]
+radius = 16.0
+height = 94.0
 
 [node name="LongRock" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hb1og")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l17bw")
@@ -17,6 +25,19 @@ position = Vector2(55, -19)
 texture = ExtResource("2_41j8o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, -7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_g3mgm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(53, -14)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_g3mgm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20, -7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_04aoj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

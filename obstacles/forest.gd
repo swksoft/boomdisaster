@@ -4,7 +4,7 @@ extends StaticBody2D
 #@onready var player = get_tree().get_root().get_node("player")
 #@onready var player = load("res://player/player.tscn")
 
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
+func _on_area_2d_2_body_entered(_body: Node2D) -> void:
 	if player.scale >= Vector2(2.0,2.0):
 		player.velocity.y /= 2.0
 		
