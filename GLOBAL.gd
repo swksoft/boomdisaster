@@ -1,8 +1,29 @@
 extends Node
 
-@onready var puntaje = 0
+const MAX_SIZE = Vector2(5.0,5.0)
+const MIN_SIZE = Vector2(0.25,0.25)
 
+@onready var puntaje = 0
 @onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+var scale = Vector2.ZERO
+
+func game_over_check(scale):
+	if scale <= MIN_SIZE:
+		Global.game_over_screen()
+		#get_tree().change_scene_to_file("res://game_over.tscn")
+
+func grow_up(scale):
+	scale += MIN_SIZE#Vector2(0.25, 0.25)
+	game_over_check(scale)
+	return scale
+
+func shrink_down(scale):
+	scale -= MIN_SIZE
+	game_over_check(scale)
+	return scale
+
+func game_over_screen():
+	get_tree().change_scene_to_file("res://game_over.tscn")
 
 func randomificar(min_num, max_num):
 	rng.randomize()

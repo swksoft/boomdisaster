@@ -11,8 +11,6 @@ var motion = Vector2.ZERO
 
 @onready var game_over := $Game_Over
 
-
-
 #var player = preload("res://player/player.tscn").instantiate()
 #@onready var player = get_tree().get_root().get_node("player")
 #@export var player:PackedScene
@@ -38,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	speed /= 0.5
-	if speed >= 64:
+	if speed >= 5:
 		timer.stop()
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
@@ -51,5 +49,6 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 	$AudioStreamPlayer.play()
 
 func _on_game_over_timeout() -> void:
-	get_tree().quit()
+	get_tree().paused = false
+	Global.game_over_screen()
 	pass

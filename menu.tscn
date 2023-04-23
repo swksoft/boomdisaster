@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=3 uid="uid://cuxym7jv3e6dw"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_5ogkb"]
+[ext_resource type="Texture2D" uid="uid://d4nk201maghg2" path="res://Sprite-0002.png" id="1_dpc5v"]
+[ext_resource type="FontVariation" uid="uid://hohkh1hwulno" path="res://cool.tres" id="1_rpia1"]
+[ext_resource type="AudioStream" uid="uid://dle7acpiqnpv5" path="res://satie_gnoissienne1.ogg" id="2_nmjoo"]
+[ext_resource type="Texture2D" uid="uid://cwxic52cni6bc" path="res://spacesexx.png" id="3_smtuw"]
+[ext_resource type="Texture2D" uid="uid://dfcsib466kpk1" path="res://monster/gomez.png" id="4_gt426"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ogkb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.529412, 0.517647, 0.686275, 1)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.486275)
+position = Vector2(864, 698)
+texture = ExtResource("1_dpc5v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(923, 85)
+scale = Vector2(5, 5)
+texture = ExtResource("4_gt426")
+
+[node name="name" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+tooltip_text = "The title of this game. Don't
+expect the name of another
+company's game to pop up."
+theme_override_colors/font_color = Color(0.682353, 0.364706, 0.372549, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_rpia1")
+theme_override_font_sizes/font_size = 200
+text = "BOOM! Disaster"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 21.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85098, 0.862745, 0.447059, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_rpia1")
+theme_override_font_sizes/font_size = 100
+text = "Play"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.85098, 0.862745, 0.447059, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("1_rpia1")
+theme_override_font_sizes/font_size = 100
+text = "Quit"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_nmjoo")
+autoplay = true
+
+[node name="credits" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.447059)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -372.0
+offset_top = -89.0
+offset_right = 372.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_rpia1")
+theme_override_font_sizes/font_size = 100
+text = "made by SWKsoft, baby"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+position = Vector2(530, 914)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_smtuw")
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

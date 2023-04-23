@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Boom! Disaster"
-run/main_scene="res://world.tscn"
+run/main_scene="res://menu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://window_icon.png"
 
@@ -23,10 +23,9 @@ Global="*res://GLOBAL.gd"
 
 window/size/viewport_width=1064
 window/size/viewport_height=982
-window/size/initial_position_type=0
-window/size/resizable=false
-window/stretch/aspect="ignore"
-window/handheld/orientation=1
+window/size/initial_position=Vector2i(0, 30)
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://arrow.png"
 
 [input]

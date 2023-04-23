@@ -15,8 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://bbaemg5lya6u" path="res://obstacles/peasant.tscn" id="11_2s2y2"]
 [ext_resource type="PackedScene" uid="uid://bokfk4qiobcvt" path="res://obstacles/forest.tscn" id="12_y0uy2"]
 [ext_resource type="PackedScene" uid="uid://pqnn65no0nxq" path="res://obstacles/long_rock.tscn" id="13_he46a"]
-[ext_resource type="AudioStream" uid="uid://dmsycsd88wyxx" path="res://Ram Ranch.ogg" id="13_mofeg"]
 [ext_resource type="PackedScene" uid="uid://8ivkm34k71ew" path="res://obstacles/super_forest.tscn" id="14_xocd5"]
+[ext_resource type="AudioStream" uid="uid://b8nqxbq20d1l8" path="res://transporte.ogg" id="17_7x6ha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x40ey"]
 texture = ExtResource("9_urls3")
@@ -58,11 +58,11 @@ limit_smoothed = true
 layer = -1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="fondo/ParallaxBackground"]
-motion_mirroring = Vector2(1064, 982)
+motion_mirroring = Vector2(2128, 1964)
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="fondo/ParallaxBackground/ParallaxLayer"]
-scale = Vector2(2, 2)
+scale = Vector2(4, 4)
 texture = ExtResource("2_m7tbw")
 centered = false
 metadata/_edit_lock_ = true
@@ -110,6 +110,9 @@ position = Vector2(-113, 108)
 [node name="SuperForest" parent="decoration" instance=ExtResource("14_xocd5")]
 position = Vector2(-315, 64)
 
+[node name="Tree" parent="decoration" instance=ExtResource("9_50idv")]
+position = Vector2(219, 1531)
+
 [node name="despawn" type="Area2D" parent="."]
 collision_layer = 2
 
@@ -128,8 +131,8 @@ modulate = Color(0.0666667, 0.690196, 0.513726, 0.576471)
 position = Vector2(10, -198)
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_mofeg")
-volume_db = -5.0
+stream = ExtResource("17_7x6ha")
+volume_db = -10.0
 
 [connection signal="timeout" from="Spawner/ObstacleSpawn" to="Spawner" method="_on_obstacle_spawn_timeout"]
 [connection signal="timeout" from="Spawner/ObstacleSpawn2" to="Spawner" method="_on_obstacle_spawn_2_timeout"]

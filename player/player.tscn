@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnafivlc53lve"]
+[gd_scene load_steps=5 format=3 uid="uid://cnafivlc53lve"]
 
 [ext_resource type="Script" path="res://playernew.gd" id="1_apxni"]
 [ext_resource type="SpriteFrames" uid="uid://cplwg1wn4p58n" path="res://player/animations.tres" id="2_xe5wc"]
+[ext_resource type="AudioStream" uid="uid://tr51vm7hhied" path="res://player/jumpi.wav" id="3_ghjgk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1315p"]
 radius = 12.0
@@ -26,9 +27,8 @@ shape = SubResource("CapsuleShape2D_1315p")
 
 [node name="SlowGrow" type="Timer" parent="grow"]
 
-[node name="NormalGrow" type="Timer" parent="grow"]
+[node name="NormalGrow" type="Timer" parent="grow" groups=["Player"]]
 wait_time = 4.0
-autostart = true
 
 [node name="FastGrow" type="Timer" parent="grow"]
 
@@ -45,6 +45,9 @@ wait_time = 2.0
 [node name="Stun" type="Timer" parent="damage"]
 
 [node name="Reload" type="Timer" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ghjgk")
 
 [connection signal="timeout" from="grow/SlowGrow" to="." method="_on_slow_grow_timeout"]
 [connection signal="timeout" from="grow/NormalGrow" to="." method="_on_normal_grow_timeout"]

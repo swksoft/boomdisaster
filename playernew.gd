@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -400.0
 const MAX_SPEED = 1000.0
 const MIN_SPEED = 250.0
 const NORMAL_SPEED = 800.0
-const MAX_SIZE = Vector2(5.0,5.0)
+const MAX_SIZE = Vector2(4.0,4.0)
 const MIN_SIZE = Vector2(0.25,0.25)
 
 # NODES
@@ -23,6 +23,7 @@ const MIN_SIZE = Vector2(0.25,0.25)
 @onready var normal_grow = $grow/NormalGrow
 @onready var fast_grow = $grow/FastGrow
 @onready var reload = $Reload
+@onready var jump_sfx = $Jump
 
 # STATE MACHINE
 
@@ -65,21 +66,9 @@ func check_speed():
 func normalize_animation():
 	animation.speed_scale = 2
 
-func grow_up():
-	if scale >= MAX_SIZE:
-		scale = Vector2(8.0,8.0)
-		velocity.y = 1
-	else:
-		scale += Vector2(0.25, 0.25)
-
-func shrink_down():
-	if scale >= MIN_SIZE:
-		scale -= MIN_SIZE
-	else:
-		scale = Vector2(0.5, 0.5)
-		velocity.y = 1
-
 func grow_up_rate():
+	normal_grow.start(3.5)
+	'''
 	if current_state == 0:
 		slow_grow.start(6.0)
 		slow_grow.stop()
@@ -93,8 +82,8 @@ func grow_up_rate():
 		fast_grow.start(2.5)
 		normal_grow.stop()
 		slow_grow.stop()
-	else:
-		pass
+	else:'''
+	pass
 	
 func horizontal_movement(speed_parameter):
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -128,10 +117,10 @@ func input_normal():
 	elif Input.is_action_pressed("Reload"):
 		print(reload.timeout)
 	
-	elif Input.is_action_just_pressed("increase_size"):
-		grow_up()
-	elif Input.is_action_just_pressed("decrease_size"):
-		shrink_down()
+	#elif Input.is_action_just_pressed("increase_size"):
+	#	scale = Global.grow_up(scale)
+	#elif Input.is_action_just_pressed("decrease_size"):
+	#	scale = Global.shrink_down(scale)
 
 func input_fast():
 	if !Input.is_action_pressed("ui_down"):
@@ -141,7 +130,6 @@ func input_fast():
 	else:
 		horizontal_movement(MIN_SPEED)
 	
-
 func input_slow():
 	if !Input.is_action_pressed("ui_up"):
 		current_state = States.NORMAL
@@ -164,6 +152,7 @@ func input_jump():
 	has_jumped = true
 	
 	if collision.disabled == true:
+		jump_sfx.play()
 		animation.play("jump")
 		$AnimatedSprite2D.position.y = -20
 		
@@ -217,7 +206,6 @@ func _physics_process(delta: float) -> void:
 func move_and_fall(delta):
 	velocity.y += gravity * delta * 2
 	move_and_slide()
-	grow_up_rate()
 
 func _on_duration_jump_timeout() -> void:
 	# DETALLES
@@ -227,29 +215,35 @@ func _on_duration_jump_timeout() -> void:
 	
 	collision.disabled = false
 	
-	#velocity.y -= 20
-
+	velocity.y -= 20
 func _on_cooldown_jump_timeout() -> void:
 	has_jumped = false
 
 # TEMPORIZADORES DE CRECIMIENTO 
 func _on_slow_grow_timeout() -> void:
-	grow_up()
+	pass
+	#grow_up()
 func _on_normal_grow_timeout() -> void:
-	grow_up()
+	#Global.grow_up(scale)
+	scale = Global.grow_up(scale)
 func _on_fast_grow_timeout() -> void:
-	grow_up()
+	#grow_up()
+	pass
 
 func _process(_delta: float) -> void:
+	
 	# DEBUG
 	print(current_state)
-	#print(normal_grow.wait_time)
+	print(normal_grow.wait_time)
 	#print(slow_grow.wait_time)
 	#print(fast_grow.wait_time)
 	#print(velocity.y)
 
 func _ready() -> void:
 	scale = Vector2(1.0,1.0)
+	grow_up_rate()
+	#normal_grow.start(3.5)
 
 func _on_reload_timeout() -> void:
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	pass
